@@ -1,4 +1,3 @@
-const createError = require('http-errors')
 const express = require('express')
 const fetch = require('node-fetch')
 const { Sequelize } = require('sequelize')
