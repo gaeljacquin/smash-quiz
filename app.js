@@ -10,7 +10,6 @@ require('dotenv').config()
 const indexRouter = require('./routes/index')
 const fightersRouter = require('./routes/fighters')
 const clipRouter = require('./routes/clip')
-const countRouter = require('./routes/count')
 
 const app = express()
 
@@ -42,7 +41,6 @@ app.use(express.static(path.join(__dirname, 'public')))
 app.use('/', indexRouter)
 app.use('/fighters', fightersRouter)
 app.use('/clip', clipRouter)
-app.use('/count/', countRouter)
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
