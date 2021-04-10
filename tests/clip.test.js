@@ -6,7 +6,7 @@ const app = require('../app')
 describe('GET /clip', () => {
   it('OK, getting a random clip from the DB', (done) => {
     request(app)
-      .get(`/clip`)
+      .get('/clip')
       .then((res) => {
         const body = res.body
         expect(res.status).to.equal(200)
