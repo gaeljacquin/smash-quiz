@@ -1,17 +1,11 @@
 const express = require('express')
 const fetch = require('node-fetch')
-const { Sequelize } = require('sequelize')
-require('dotenv').config()
+const database = require('../utils/database')
 
 const app = express()
-const sequelize = new Sequelize(process.env.DATABASE_URL, {
-  dialectOptions: {
-    ssl: {
-      require: true,
-      rejectUnauthorized: false
-    }
-  }
-})
+const Sequelize = database.Sequelize()
+const sequelize = database.sequelize()
+
 const Fighters = sequelize.define(
   'fighter',
   {

@@ -1,16 +1,9 @@
 const express = require('express')
 const fetch = require('node-fetch')
-const { Sequelize } = require('sequelize')
+const database = require('../utils/database')
 
 const app = express()
-const sequelize = new Sequelize(process.env.DATABASE_URL, {
-  dialectOptions: {
-    ssl: {
-      require: true,
-      rejectUnauthorized: false
-    }
-  }
-})
+const sequelize = database.sequelize()
 const query = `SELECT c.youtube_id, c.timer, string_agg(a.smash_id::text, ',') AS smash_ids
   FROM clip c
   LEFT JOIN answer a on c.id = a.clip_id
