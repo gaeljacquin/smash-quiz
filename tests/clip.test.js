@@ -1,6 +1,5 @@
 const expect = require('chai').expect
 const request = require('supertest')
-const _ = require('lodash')
 
 const app = require('../app')
 
