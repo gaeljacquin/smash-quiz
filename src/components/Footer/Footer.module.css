@@ -1,0 +1,76 @@
+.footer .logo {
+  width: 80px;
+  margin-top: 30px;
+}
+
+.container,
+.containerNoBorder,
+.containerAlt {
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  width: 2100px;
+  max-width: 100%;
+  border-top: 1px solid rgba(62, 62, 225, 0.12);
+  margin-top: 80px;
+  margin: auto;
+}
+
+.container,
+.containerNoBorder {
+  height: 80px;
+}
+
+.containerNoBorder {
+  border-top: 0;
+}
+
+.logoLink img {
+  width: 60px;
+}
+
+.nav {
+  margin-left: auto;
+  margin-top: 6px;
+}
+
+.nav li {
+  list-style: none;
+}
+
+.nav li a + a {
+  margin-left: 14px;
+}
+
+.nav li a {
+  margin-left: 14px;
+}
+
+.nav li a img {
+  opacity: 0.4;
+  transition: opacity ease-in 0.2s;
+}
+
+.nav li a:hover img,
+.nav li a:active img {
+  opacity: 0.8;
+}
+
+.myName {
+  font-style: normal;
+  font-weight: 500;
+  /* font-size: calc(var(--bigBodySize) * 1.1); */
+  line-height: 108.7%;
+  margin-top: 5px;
+  color: var(--primaryColor);
+  line-height: 1.3em;
+}
+
+@media screen and (max-width: 880px) {
+  .container,
+  .containerNoBorder {
+    padding: 0 20px;
+  }
+}
