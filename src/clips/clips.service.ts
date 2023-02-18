@@ -23,7 +23,7 @@ export class ClipsService {
     return this.clipModel.aggregate(
       [
         { $sample: { size: 1 } },
-        { $unset: ["_id", "name", "fighters_array"] },
+        { $unset: ["_id", "name"] },
       ]
     )
   }
