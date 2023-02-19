@@ -20,12 +20,16 @@ export class ClipsService {
   }
 
   async findRandom() {
-    return this.clipModel.aggregate(
-      [
-        { $sample: { size: 1 } },
-        { $unset: ["_id", "name"] },
-      ]
-    )
+    const count = await this.clipModel.count()
+    const random = Math.floor(Math.random() * count)
+    const clip = await this.clipModel
+      .findOne({}, {
+        _id: 0,
+        name: 0,
+      })
+      .skip(random)
+
+    return clip
   }
 
   findOne(id: number) {
