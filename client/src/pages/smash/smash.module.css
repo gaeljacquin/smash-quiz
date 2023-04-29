@@ -1,0 +1,217 @@
+.gamesContainer {
+  margin: 0 auto 80px;
+}
+
+.gamesContainer2 {
+  margin: 125px auto 80px;
+}
+
+.title, .subtitle, .title2, .subtitle2 {
+  letter-spacing: -0.04em;
+  margin-top: 0;
+  text-align: center;
+  color: var(--black);
+}
+
+.title {
+  font-size: calc(var(--h1Size) * 1.1);
+  font-weight: 300;
+  letter-spacing: -0.04em;
+  margin-bottom: 0;
+  margin-top: 0;
+  color: var(--black);
+  margin-bottom: 15px;
+}
+
+.subtitle {
+  font-weight: 100;
+  font-size: calc(var(--h1Size) * 0.6);
+  margin-bottom: 70px;
+}
+
+.title2 {
+  font-size: calc(var(--h1Size) * 0.8);
+  font-weight: 300;
+  letter-spacing: -0.04em;
+  margin-bottom: 0;
+  margin-top: 0;
+  color: var(--black);
+}
+
+.subtitle2 {
+  font-weight: 400;
+  font-size: calc(var(--h1Size) * 0.5);
+  margin-bottom: -20px;
+}
+
+.mt-150 {
+  margin-top: 150px;
+}
+
+.mt-90 {
+  margin-top: 90px;
+}
+
+.mt-50 {
+  margin-top: 50px;
+}
+
+.mt-30 {
+  margin-top: 30px;
+}
+
+.mt-15 {
+  margin-top: 15px;
+}
+
+@media screen and (max-width: 880px) {
+  .gamesContainer {
+    padding: 0 30px;
+  }
+
+  .title {
+    margin-top: 70px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .gamesContainer {
+    padding: 0 20px;
+  }
+}
+
+.a-no-underline {
+  text-decoration: none !important;
+}
+
+hr.dotted {
+  width: 100%;
+  border-top: 3px solid #b8b8b8;
+  margin: 90px auto 90px;
+}
+
+.center {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.selected img.character {
+  filter: brightness(50%);
+}
+
+.portraits {
+  position: relative;
+  top: 0;
+  left: 0;
+}
+
+.portraits img {
+  border: 3px solid #fff;
+  border-radius: 100px;
+  box-shadow: 4px 6px 10px 4px #000;
+}
+
+.portraits img.character {
+  margin: 20px;
+  width: 90px;
+  box-shadow: 4px 6px 10px 4px #000;
+  transition: all .15s ease-out 0s;
+}
+
+.portraits img.selectIcon, .portraits.final img.selectIcon {
+  width: 45px;
+  box-shadow: 4px 6px 10px 4px #000;
+}
+
+.portraits img.selectIcon {
+  margin: 15px;
+}
+
+.portraits.final img.selectIcon {
+  margin: 50px;
+}
+
+.portraits.deselected img.character:hover {
+  transform: scale(1.4);
+  box-shadow: 4px 6px 10px 4px #000;
+  background: var(--smashGradient);
+}
+
+.character {
+  position: relative;
+  top: 0;
+  left: 0;
+}
+
+.selectIcon {
+  position: absolute;
+  top: 30px;
+  left: 30px;
+}
+
+.smash-button {
+  border-radius: 15px;
+  background: linear-gradient(to right bottom, rgb(10, 185, 230), rgb(0, 171, 246), rgb(0, 154, 255), rgb(0, 133, 255), rgb(94, 104, 255), rgb(161, 84, 237), rgb(205, 56, 211), rgb(236, 0, 180), rgb(255, 0, 145), rgb(255, 0, 110), rgb(255, 12, 76), rgb(255, 60, 40));
+  display: inline-block;
+  box-shadow: 0 4px 17px rgba(0, 0, 0, 0.18);
+  cursor: pointer;
+  font-size: 1.1rem;
+  padding: 16px 31px;
+  color: #ffffff;
+  transition: transform 0.24s cubic-bezier(0.18, 0.89, 0.4, 1.03), box-shadow 0.2s ease-in;
+  text-decoration: none;
+}
+
+.smash-button:hover {
+  transform: scale(1.30);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.28);
+}
+
+.score {
+  font-style: normal;
+  font-weight: 500;
+  font-size: calc(var(--smallBodySize) * 2.1);
+}
+
+/* Every rule not marked by "required" is optional and used only to decorate the example */
+.timer {
+  display: flex; /* required */
+  flex-flow: row nowrap; /* required */
+  font-size: 2rem;
+}
+
+.timer .background, .timer .foreground {
+  box-sizing: border-box; /* required */
+  width: 100%; /* required */
+  flex: none; /* required */
+}
+
+.timer .foreground {
+  /* margin-left: -100%; /* required */
+  margin-left: -100%;
+  margin-top: 0.5%;
+  text-align: center;
+}
+
+.timer .background {
+  color: var(--primaryColor);
+  text-align: center;
+  margin-top: 50px;
+}
+
+input[name=filter-character] {
+  display: inline-block;
+  height: 40px;
+  box-sizing: border-box;
+  outline: none;
+  border: 1px solid lightgray;
+  border-radius: 7px;
+  padding: 10px;
+  transition: all 0.1s ease-out;
+}
+
+.fill-width {
+  flex: 1;
+}
