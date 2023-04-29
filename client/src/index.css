@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&family=Source+Sans+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&Comic+Neue:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
+
+body {
+  font-family: "Open Sans", "Source Sans Pro", Helvetica, sans-serif, "Comic Neue", cursive;
+}
+
+:root {
+  --black: #242121;
+  --bigBodySize: 1.7rem;
+  --h1Size: 2.75rem;
+  --smallBodySize: 1.15rem;
+  --sidebarSize: 15px;
+  --linkColor: #0079ff;
+  --primaryColor: #1b6915;
+  --secondaryColor: #8e1111;
+  --smashGradient: linear-gradient(to right bottom, #0ab9e6, #00abf6, #009aff, #0085ff, #5e68ff, #a154ed, #cd38d3, #ec00b4, #ff0091, #ff006e, #ff0c4c, #ff3c28);
+}
+
+@media screen and (max-width: 1100px) {
+  :root {
+    --bigBodySize: 1.7rem;
+    --h1Size: 2.5rem;
+    --smallBodySize: 1.20rem;
+    --sidebarSize: 15px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  :root {
+    --bigBodySize: 1.2rem;
+    --h1Size: 1.7rem;
+    --smallBodySize: 1.15rem;
+    --sidebarSize: 13px;
+  }
+}
