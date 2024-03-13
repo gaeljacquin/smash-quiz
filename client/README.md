@@ -1,2 +1,2 @@
-# smash-quiz
-Smash Quiz
+# smash-quiz-client
+Smash Quiz Client

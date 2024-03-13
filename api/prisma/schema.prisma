@@ -1,0 +1,36 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model answer {
+  id       Int      @id @default(autoincrement())
+  clip_id  Int?
+  smash_id String?  @db.VarChar(10)
+  clip     clip?    @relation(fields: [clip_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  fighter  fighter? @relation(fields: [smash_id], references: [smash_id], onDelete: NoAction, onUpdate: NoAction)
+}
+
+model clip {
+  id         Int      @id @default(autoincrement())
+  video_name String?  @db.VarChar(100)
+  timer      Int?
+  youtube_id String?  @db.VarChar(50)
+  answer     answer[]
+}
+
+model fighter {
+  id         Int      @id @default(autoincrement())
+  smash_id   String?  @unique @db.VarChar(10)
+  name_en_us String?  @db.VarChar(100)
+  name_fr_ca String?  @db.VarChar(100)
+  name_fr_fr String?  @db.VarChar(100)
+  name_es_la String?  @db.VarChar(100)
+  name_es_es String?  @db.VarChar(100)
+  chara_0    String?  @db.VarChar(100)
+  answer     answer[]
+}
