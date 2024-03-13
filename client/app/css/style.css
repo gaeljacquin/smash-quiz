@@ -1,0 +1,44 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+
+/* Additional styles */
+@import 'additional-styles/utility-patterns.css';
+@import 'additional-styles/range-slider.css';
+@import 'additional-styles/toggle-switch.css';
+@import 'additional-styles/theme.css';
+
+@import 'tailwindcss/utilities';
+
+/* Additional Tailwind directives: https://tailwindcss.com/docs/functions-and-directives/#responsive */
+@layer utilities {
+    .rtl {
+        direction: rtl;
+    }
+}
+
+@layer components {
+  .shadow-animate {
+    box-shadow:  0px  0px  10px  5px #48abe0;
+    animation: shadows  1.5s infinite;
+  }
+
+  .shadow-animate-2 {
+    box-shadow:  0px  0px  10px  5px #48abe0;
+    animation: shadows  1.5s forwards;
+  }
+
+  @keyframes shadows {
+    0% {
+      box-shadow:  0px  0px  10px  5px #48abe0;
+    }
+    50% {
+      box-shadow:  0px  0px  10px  5px blueviolet;
+    }
+    75% {
+      box-shadow:  0px  0px  10px  5px rebeccapurple;
+    }
+    100% {
+      box-shadow:  0px  0px  10px  5px #48abe0;
+    }
+  }
+}

@@ -1,8 +1,0 @@
-[build]
-  command = "GENERATE_SOURCEMAP=false npm run build"
-  publish = "build/"
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
