@@ -1,11 +1,11 @@
 {
-  "name": "smash-quiz-client",
-  "description": "Smash Quiz Client",
+  "name": "smash-quiz",
+  "description": "Smash Quiz",
   "author": "Gaël Jacquin",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "private": true,
   "engines": {
-    "node": ">=20.x"
+    "node": ">=18.x"
   },
   "scripts": {
     "build": "next build",
