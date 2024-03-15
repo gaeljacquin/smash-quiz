@@ -1,0 +1,33 @@
+import { NextResponse } from 'next/server';
+
+import prisma from '~/prisma/client';
+
+export async function GET() {
+  try {
+    // const data = await prisma.fighter.findMany({
+    //   select: {
+    //     smash_id: true,
+    //     simple_name: true,
+    //     name_en_us: true,
+    //     chara_0: true,
+    //     chara_5: true,
+    //   }
+    // });
+
+    const data: Array<unknown> = await prisma.$queryRaw`
+      SELECT
+        f.smash_id,
+        f.simple_name,
+        f.name_en_us,
+        ${process.env.NEXT_CLOUDINARY_IMAGE_PATH} || '/' || f.chara_0 || '/SSBU Roster/' || f.simple_name || '/chara_0_' || f.simple_name || '_00.webp' AS partial_img,
+        ${process.env.NEXT_CLOUDINARY_IMAGE_PATH} || '/' || f.chara_5 || '/SSBU Roster/' || f.simple_name || '/chara_5_' || f.simple_name || '_00.webp' AS full_img
+      FROM
+        fighter f
+      ;
+    `;
+
+    return NextResponse.json(data);
+  } catch (error) {
+    return NextResponse.json({ message: (error as Error).message, status: 500 });
+  }
+}
