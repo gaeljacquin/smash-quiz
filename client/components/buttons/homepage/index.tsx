@@ -3,7 +3,6 @@
 import Link from 'next/link'
 import { type ReactElement, useState } from 'react'
 
-import useRosterStore from '~/stores/useRosterStore'
 import EasterEggs from '@/components/easter-eggs'
 
 export default function HomepageButtons(): ReactElement {

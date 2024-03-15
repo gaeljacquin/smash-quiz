@@ -1,14 +1,14 @@
-import Image from 'next/image'
-import Link from 'next/link'
+import Image from 'next/image';
+import Link from 'next/link';
 
-import { nowGael } from '@/utils/constants'
+import { nowGael } from '@/utils/constants';
 
 export default function Footer() {
   return (
     <footer className="footer footer-center p-10 max-w-6xl mx-auto border-t border-gray-200">
       <aside>
         <Image
-          src={process.env.NEXT_PUBLIC_IMAGE_PATH + '/v1709227789/main/logo.webp'}
+          src={process.env.NEXT_PUBLIC_CLOUDINARY_IMAGE_PATH + '/v1709227789/main/logo.webp'}
           alt="Gaël's Logo"
           className="mx-auto w-16 h-auto"
           sizes="100vw"
@@ -18,26 +18,14 @@ export default function Footer() {
         <p className="font-bold">
           Smashing it 😎
         </p>
-        {/* <p>Built with deez nuts</p> */}
         <p>
           &copy; {nowGael.currentYear}
           {' '}
-          <Link href="https://gaeljacquin.com?sq=1">
+          <Link href="https://gaeljacquin.com">
             <span className="text-gael-green">Gaël Jacquin</span>
           </Link>.
           {' '}
           All rights reserved.
-        </p>
-        <p>
-          Assets:
-          <Link
-            href="https://www.spriters-resource.com/nintendo_switch/supersmashbrosultimate"
-            className="text-gael-purple hover:text-gael-purple-dark"
-            target="_blank"
-          >
-            {' '}
-            The Spriters Resource
-          </Link>
         </p>
 
         <nav className="mt-2">

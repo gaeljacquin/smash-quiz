@@ -8,7 +8,7 @@ export default function idclipModal({ isOpen, onClose }: { isOpen: boolean, onCl
     <>
       <BaseModal onClose={onClose} isOpen={isOpen}>
         <Image
-          src={process.env.NEXT_PUBLIC_IMAGE_PATH + '/v1709320782/Uncategorized/big-brother.jpg'}
+          src={process.env.NEXT_PUBLIC_CLOUDINARY_IMAGE_PATH + '/v1709320782/Uncategorized/big-brother.jpg'}
           alt={'Big Brother is watching you'}
           className="object-contain h-96 w-96"
           width="0"

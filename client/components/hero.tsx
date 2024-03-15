@@ -15,11 +15,11 @@ export default function Hero() {
           </div>
 
           <ModalVideo
-            thumb={process.env.NEXT_PUBLIC_IMAGE_PATH + ',c_limit/v1710283363/Uncategorized/mural.webp'}
+            thumb={process.env.NEXT_PUBLIC_CLOUDINARY_IMAGE_PATH + ',c_limit/v1710283363/Uncategorized/mural.webp'}
             thumbWidth={1681}
             thumbHeight={1681}
             thumbAlt="Video thumbnail"
-            video={process.env.NEXT_PUBLIC_VIDEO_PATH + '/v1709148851/Uncategorized/ewvfko5dr83rj8es86ej.webm'}
+            video={process.env.NEXT_PUBLIC_CLOUDINARY_VIDEO_PATH + '/v1709148851/Uncategorized/ewvfko5dr83rj8es86ej.webm'}
             videoTitle={'Just Push Play'}
             videoWidth={1920}
             videoHeight={1080}

@@ -63,7 +63,7 @@ export default function MobileMenu() {
         >
           <ul className="px-5 py-2">
             <li>
-              <Link href="https://gaeljacquin.com?sq=1">
+              <Link href="https://gaeljacquin.com">
                 <span className="btn-sm text-gray-200 bg-red-700 hover:bg-red-600 w-full my-2">
                   The Blast Zone
                   <svg className="w-3 h-3 fill-current text-gray-200 shrink-0 ml-2 -mr-1" viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg">

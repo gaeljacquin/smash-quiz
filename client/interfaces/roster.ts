@@ -1,3 +1,3 @@
 import type { CharacterPlus } from '~/interfaces/character';
 
-export type Roster = Array<CharacterPlus>
+export type Roster = Array<CharacterPlus>;

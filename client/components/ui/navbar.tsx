@@ -5,7 +5,6 @@ import Link from 'next/link'
 
 import Logo from './logo'
 import MobileMenu from './mobile-menu'
-import useRosterStore from '~/stores/useRosterStore'
 
 export default function Navbar() {
   const [top, setTop] = useState<boolean>(true);
@@ -32,7 +31,7 @@ export default function Navbar() {
           <nav className="hidden md:flex md:grow">
             <ul className="flex grow justify-end flex-wrap items-center">
               <li>
-                <Link href="https://gaeljacquin.com?sq=1">
+                <Link href="https://gaeljacquin.com">
                   <span className="btn-sm text-gray-200 bg-red-700 hover:bg-red-600 w-full my-2">
                     The Blast Zone
                     <svg className="w-3 h-3 fill-current text-gray-200 shrink-0 ml-2 -mr-1" viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg">

@@ -9,11 +9,11 @@ export default function SixtyNineModal({ isOpen, onClose }: { isOpen: boolean, o
     <>
       <BaseModal onClose={onClose} isOpen={isOpen}>
         {/* <Video
-          src={process.env.NEXT_PUBLIC_VIDEO_PATH + '/v1709313223/Smash%20Who/Easter_Egg_69_bseNaQknOe8_bickeq.webm'}
+          src={process.env.NEXT_PUBLIC_CLOUDINARY_VIDEO_PATH + '/v1709313223/Smash%20Who/Easter_Egg_69_bseNaQknOe8_bickeq.webm'}
           format={'webm'}
         /> */}
         <Image
-          src={process.env.NEXT_PUBLIC_IMAGE_PATH + '/v1710284797/Uncategorized/nice.gif'}
+          src={process.env.NEXT_PUBLIC_CLOUDINARY_IMAGE_PATH + '/v1710284797/Uncategorized/nice.gif'}
           alt={'Nice GIF'}
           className="object-contain h-96 w-96"
           width="0"

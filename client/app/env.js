@@ -7,9 +7,19 @@ export const env = createEnv({
    * isn't built with invalid env vars.
    */
   server: {
+    DATABASE_URL: z
+      .string()
+      .url()
+      .refine(
+        (str) => !str.includes("POSTGRESQL_URL_HERE"),
+        "You forgot to change the default URL"
+      ),
     NODE_ENV: z
       .enum(["development", "test", "production"])
       .default("development"),
+    NEXT_CLOUDINARY_IMAGE_PATH: z.string(),
+    NEXT_CLOUDINARY_VIDEO_PATH: z.string(),
+    NEXT_YOUTUBE_VIDEO_URL: z.string(),
   },
 
   /**
@@ -19,8 +29,8 @@ export const env = createEnv({
    */
   client: {
     // NEXT_PUBLIC_CLIENTVAR: z.string(),
-      NEXT_PUBLIC_IMAGE_PATH: z.string(),
-      NEXT_PUBLIC_VIDEO_PATH: z.string(),
+    NEXT_PUBLIC_CLOUDINARY_IMAGE_PATH: z.string(),
+    NEXT_PUBLIC_CLOUDINARY_VIDEO_PATH: z.string(),
   },
 
   /**
@@ -28,9 +38,13 @@ export const env = createEnv({
    * middlewares) or client-side so we need to destruct manually.
    */
   runtimeEnv: {
+    DATABASE_URL: process.env.DATABASE_URL,
     NODE_ENV: process.env.NODE_ENV,
-    NEXT_PUBLIC_IMAGE_PATH: process.env.NEXT_PUBLIC_IMAGE_PATH,
-    NEXT_PUBLIC_VIDEO_PATH: process.env.NEXT_PUBLIC_VIDEO_PATH,
+    NEXT_CLOUDINARY_IMAGE_PATH: process.env.NEXT_PUBLIC_CLOUDINARY_IMAGE_PATH,
+    NEXT_CLOUDINARY_VIDEO_PATH: process.env.NEXT_PUBLIC_CLOUDINARY_VIDEO_PATH,
+    NEXT_YOUTUBE_VIDEO_URL: process.env.NEXT_YOUTUBE_VIDEO_URL,
+    NEXT_PUBLIC_CLOUDINARY_IMAGE_PATH: process.env.NEXT_PUBLIC_CLOUDINARY_IMAGE_PATH,
+    NEXT_PUBLIC_CLOUDINARY_VIDEO_PATH: process.env.NEXT_PUBLIC_CLOUDINARY_VIDEO_PATH,
     // NEXT_PUBLIC_CLIENTVAR: process.env.NEXT_PUBLIC_CLIENTVAR,
   },
   /**

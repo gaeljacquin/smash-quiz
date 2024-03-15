@@ -1,19 +1,21 @@
 'use client'
 
-import type { ReactElement } from 'react'
+import type { ReactElement } from 'react';
 
-import useRosterStore from '~/stores/useRosterStore'
+import useRosterStore from '@/stores/gameStore';
+import BaseButton from '~/components/buttons/base';
 
 export default function ResetButton(): ReactElement {
-  const { resetToggles, toggledCharacters } = useRosterStore()
+  const { resetToggles, toggledCharacters, characterSelectionBlocked } = useRosterStore()
 
   return (
-    <button
+    <BaseButton
+      color={'bg-purple-400'}
+      hoverColor={'hover:bg-purple-500'}
+      textColor={'text-white'}
       onClick={() => resetToggles()}
-      className='btn btn-xs sm:btn-sm md:btn-md lg:btn-lg bg-gael-purple hover:bg-gael-purple-dark glass text-white'
-      disabled={toggledCharacters.length === 0}
-    >
-      Reset
-    </button>
+      disabled={toggledCharacters.length === 0 || characterSelectionBlocked}
+      text={'Reset'}
+    />
   )
 }

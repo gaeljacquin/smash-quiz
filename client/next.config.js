@@ -16,7 +16,7 @@ const config = {
     ],
   },
   env: {
-    imagePath: `${process.env.NEXT_PUBLIC_IMAGE_PATH}`,
+    imagePath: `${process.env.NEXT_PUBLIC_CLOUDINARY_IMAGE_PATH}`,
   },
 };
 

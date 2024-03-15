@@ -1,49 +1,52 @@
 'use client'
 
-import Image from 'next/image'
-import Link from 'next/link'
-import type { FC, ReactElement } from 'react'
+import Image from 'next/image';
 
-import useRosterStore from '~/stores/useRosterStore'
+import type { CharacterItemProps } from '@/interfaces/character';
+import useRosterStore from '@/stores/gameStore';
 
-interface CharacterItemProps {
-  smashId: string
-  openCharacterModal: () => void
-}
+export default function CharacterItem(props: CharacterItemProps) {
+  const { clip, roster, toggleCharacter, toggledCharacters, glow, characterSelectionBlocked } = useRosterStore();
+  const character = roster.find((character) => character.smash_id === props.smashId);
+  const toggled = character ? toggledCharacters.includes(character.smash_id) : false;
+  let brightness = '';
 
-const CharacterItem: FC<CharacterItemProps> = (characterItemProps): ReactElement => {
-  const {...props} = characterItemProps
-  const { roster, toggleCharacter, toggledCharacters, glow } = useRosterStore()
-  const character = roster.find((character) => character.smash_id === props.smashId)
-  const toggled = character ? toggledCharacters.includes(character.smash_id) : false
+  if (!toggled) {
+    if (toggledCharacters.length === clip.fighters.length) {
+      brightness = 'grayscale';
+    } else {
+      brightness = 'brightness-50';
+    }
+  }
+
+  const onClick = (smash_id: string) => {
+    if ((toggledCharacters.length === clip.fighters.length && !toggled) || characterSelectionBlocked) {
+      () => null;
+    } else {
+      toggleCharacter(smash_id);
+    }
+  }
 
   return (
     <>
       {character &&
         <div className="avatar">
           <div
-            className={`flex border-2 border-black rounded-xl bg-indigo-100${toggled ? ' grayscale' : ''}${glow && !toggled && toggledCharacters.length !== 0 ? ' shadow-animate' : ''}`}
-            onClick={() => toggleCharacter(character.smash_id)}
+            className={`border-2 border-black rounded-xl bg-indigo-100 ${brightness} ${glow && toggled && toggledCharacters.length !== 0 ? 'shadow-animate' : ''}`}
+            onClick={() => onClick(character.smash_id)}
           >
             <Image
-              src={character.partialImg}
-              alt={character.name.en_us}
-              className="mx-auto w-auto h-auto"
+              src={character.partial_img}
+              alt={character.name_en_us}
+              className="mx-auto object-cover w-auto h-auto"
               width="0"
               height="0"
               sizes="200vw"
               priority
             />
           </div>
-          <Link href='#'>
-            <div className="absolute bottom-0 left-0 w-full h-8 bg-black bg-opacity-50 text-white text-center rounded-b-xl flex justify-center items-center" onClick={() => props.openCharacterModal()}>
-              <p className="text-xs xs:text-base">{character.name.en_us}</p>
-            </div>
-          </Link>
         </div>
       }
     </>
   )
 }
-
-export default CharacterItem
