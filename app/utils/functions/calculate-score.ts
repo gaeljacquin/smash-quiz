@@ -1,6 +1,6 @@
 export default function calculateScore(answers: string[], selection: string[]) {
-  const score = selection.filter((element) =>
-    answers.includes(element)
+  const score = selection.filter((fighter) =>
+    answers.includes(fighter)
   );
 
   return score.length;

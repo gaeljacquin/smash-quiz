@@ -16,7 +16,7 @@ export default function Footer() {
           height="0"
         />
         <p className="font-bold">
-          Smashing it 😎
+          Smashing it 🙃
         </p>
         <p>
           &copy; {nowGael.currentYear}

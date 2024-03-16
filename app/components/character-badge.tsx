@@ -1,10 +1,10 @@
 'use client'
 
 import type { CharacterItemProps } from '@/interfaces/character';
-import useRosterStore from '@/stores/gameStore'
+import useRosterStore from '@/stores/game-store'
 
 export default function CharacterBadge(props: CharacterItemProps) {
-  const { clip, roster } = useRosterStore();
+  const { currentClip: clip, roster } = useRosterStore();
   const character = roster.find((character) => character.smash_id === props.smashId);
   const correct = character ? clip.fighters.includes(character.smash_id) : false;
   let classes = '';
