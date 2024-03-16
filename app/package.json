@@ -2,7 +2,7 @@
   "name": "smash-quiz",
   "description": "Smash Quiz",
   "author": "Gaël Jacquin",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "private": true,
   "engines": {
     "node": ">=18.x"

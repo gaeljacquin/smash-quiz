@@ -4,16 +4,6 @@ import prisma from '~/prisma/client';
 
 export async function GET() {
   try {
-    // const data = await prisma.fighter.findMany({
-    //   select: {
-    //     smash_id: true,
-    //     simple_name: true,
-    //     name_en_us: true,
-    //     chara_0: true,
-    //     chara_5: true,
-    //   }
-    // });
-
     const data: Array<unknown> = await prisma.$queryRaw`
       SELECT
         f.smash_id,

@@ -4,6 +4,7 @@ import { devtools, persist } from 'zustand/middleware';
 import type { CharacterPlus } from '~/interfaces/character';
 import type { Roster } from '~/interfaces/roster';
 import { blankClip, type Clip } from '~/interfaces/clip';
+import selectClip from '@/utils/functions/select-clip';
 
 interface GameStore {
   fetchRoster: () => Promise<void>
@@ -13,8 +14,9 @@ interface GameStore {
   toggleCharacter: (smashId: string) => void
   toggledCharacters: Array<string>
   toggleGlow: () => void
-  getClip: (lastClipId: number) => Promise<void>
-  clip: Clip
+  fetchClips: () => Promise<void>
+  clips: Clip[]
+  currentClip: Clip
   characterSelectionBlocked: boolean
   blockCharacterSelection: (value: boolean) => void
 }
@@ -27,8 +29,9 @@ export const defaultGameState = {
   toggleCharacter: null,
   toggledCharacters: [],
   toggleGlow: null,
-  getClip: null,
-  clip: blankClip,
+  fetchClips: null,
+  clips: [blankClip],
+  currentClip: blankClip,
   characterSelectionBlocked: true,
   blockCharacterSelection: null,
 }
@@ -36,7 +39,7 @@ export const defaultGameState = {
 const useGameStore = create<GameStore>()(
   persist(
     devtools(
-      (set) => ({
+      (set, get) => ({
         ...defaultGameState,
         fetchRoster: async () => {
           try {
@@ -73,25 +76,19 @@ const useGameStore = create<GameStore>()(
             }
           });
         },
-        getClip: async (lastClipId = 0) => {
+        fetchClips: async () => {
           try {
-            const res = await fetch('/api/clip', {
-              method: 'POST',
-              headers: {
-                'Content-Type': 'application/json'
-              },
-              body: JSON.stringify({ exclude: lastClipId })
-            });
+            const res = await fetch('/api/clips');
+            const clips = await res.json() as Clip[];
 
-            if (!res.ok) {
-              throw new Error('Failed to fetch clip data');
-            }
+            set({ clips });
 
-            const clip = await res.json() as Clip;
+            const { currentClip: selectedClip } = get();
+            const clip = selectClip(clips, selectedClip.id);
 
-            set({ clip });
+            set({ currentClip: clip });
           } catch (error) {
-            console.error('Error fetching clip data: ', error);
+            console.error('Error fetching clips or setting clip: ', error)
           }
         },
         blockCharacterSelection: (value: boolean) => {

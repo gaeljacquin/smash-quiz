@@ -18,7 +18,7 @@ interface YouTubePlayerType {
 }
 
 export default function Clip() {
-  const { clip, getClip, toggledCharacters, resetToggles, blockCharacterSelection } = useGameStore();
+  const { currentClip: clip, fetchClips, toggledCharacters, resetToggles, blockCharacterSelection } = useGameStore();
   const [started, setStarted] = useState(false);
   const [playing, setPlaying] = useState(true);
   const [revealed, setRevealed] = useState(false);
@@ -69,7 +69,7 @@ export default function Clip() {
     setStarted(false);
     setPlaying(true);
     setRevealed(false);
-    void getClip(clip.id);
+    void fetchClips();
   }
 
   const handleEnd = () => {
@@ -77,8 +77,8 @@ export default function Clip() {
   }
 
   useEffect(() => {
-    void getClip(0);
-  }, [getClip]);
+    void fetchClips();
+  }, [fetchClips]);
 
   return (
     <div className="flex flex-col items-center">
