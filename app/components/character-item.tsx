@@ -3,7 +3,7 @@
 import Image from 'next/image';
 
 import type { CharacterItemProps } from '@/interfaces/character';
-import useRosterStore from '@/stores/gameStore';
+import useRosterStore from '@/stores/game-store';
 
 export default function CharacterItem(props: CharacterItemProps) {
   const { currentClip: clip, roster, toggleCharacter, toggledCharacters, glow, characterSelectionBlocked } = useRosterStore();
@@ -30,9 +30,11 @@ export default function CharacterItem(props: CharacterItemProps) {
   return (
     <>
       {character &&
-        <div className="avatar">
+        <div className="avatar tooltip" data-tip={character.name_en_us}>
           <div
-            className={`border-2 border-black rounded-xl bg-indigo-100 ${brightness} ${glow && toggled && toggledCharacters.length !== 0 ? 'shadow-animate' : ''}`}
+            className={
+              `border-2 border-black rounded-xl bg-indigo-100 ${brightness} ${glow && toggled && toggledCharacters.length !== 0 ? 'shadow-animate' : ''}`
+            }
             onClick={() => onClick(character.smash_id)}
           >
             <Image

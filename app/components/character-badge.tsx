@@ -1,7 +1,7 @@
 'use client'
 
 import type { CharacterItemProps } from '@/interfaces/character';
-import useRosterStore from '@/stores/gameStore'
+import useRosterStore from '@/stores/game-store'
 
 export default function CharacterBadge(props: CharacterItemProps) {
   const { currentClip: clip, roster } = useRosterStore();
