@@ -6,6 +6,8 @@ import { Dialog, Transition } from '@headlessui/react'
 import Image from 'next/image'
 
 import { handleLoadStart } from '~/components/video'
+import YouTube from 'react-youtube'
+import { random } from '@/utils/constants'
 
 interface ModalVideoProps {
   thumb: StaticImageData | string
@@ -16,6 +18,7 @@ interface ModalVideoProps {
   videoTitle: string
   videoWidth: number
   videoHeight: number
+  youtubeId?: string | null
 }
 
 export default function ModalVideo({
@@ -27,6 +30,7 @@ export default function ModalVideo({
   videoTitle,
   videoWidth,
   videoHeight,
+  youtubeId = null,
 }: ModalVideoProps) {
   const [modalOpen, setModalOpen] = useState<boolean>(false)
   const videoRef = useRef<HTMLVideoElement>(null)
@@ -69,11 +73,22 @@ export default function ModalVideo({
             leaveTo="opacity-0 scale-95"
           >
             <div className="max-w-6xl mx-auto h-full flex items-center">
-              <Dialog.Panel className="w-full max-h-full aspect-video bg-black overflow-hidden">
-                <video ref={videoRef} width={videoWidth} height={videoHeight} controls onLoadStart={handleLoadStart}>
-                  <source src={video} type="video/mp4" />
-                  Your browser does not support the video tag.
-                </video>
+              <Dialog.Panel className={`w-full max-h-full ${!youtubeId ? 'aspect-video' : ''} bg-black overflow-hidden`}>
+                {youtubeId ?
+                  <YouTube
+                    videoId={youtubeId}
+                    opts={random.homeOpts}
+                    onReady={(event) => {
+                      void event.target.setVolume(50);
+                      void event.target.playVideo();
+                    }}
+                  />
+                :
+                  <video ref={videoRef} width={videoWidth} height={videoHeight} controls onLoadStart={handleLoadStart}>
+                    <source src={video} type="video/mp4" />
+                    Your browser does not support the video tag.
+                  </video>
+                }
               </Dialog.Panel>
             </div>
           </Transition.Child>

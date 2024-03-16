@@ -10,6 +10,7 @@ import BaseButton from '@/components/buttons/base';
 import TextSpecial from '@/components/text-special';
 import calculateScore from '@/utils/functions/calculate-score';
 import CharacterBadge from '@/components/character-badge';
+import { random } from '@/utils/constants';
 
 type YouTubePlayerType = {
   internalPlayer: {
@@ -30,14 +31,6 @@ export default function Clip() {
   const [playing, setPlaying] = useState(true);
   const [revealed, setRevealed] = useState(false);
   const playerRef = useRef<YouTubePlayer & YouTubePlayerType | null>(null);
-  const opts = {
-    height: '390',
-    width: '640',
-    playerVars: {
-      autoplay: 1 as 0 | 1,
-      controls: 1 as 0 | 1,
-    },
-  };
   const secretMessage = 'ok no more oriohn jam';
   const [timerText, setTimerText] = useState(secretMessage)
 
@@ -163,7 +156,7 @@ export default function Clip() {
                   >
                     <YouTube
                       videoId={clip.youtube_id}
-                      opts={opts}
+                      opts={random.gameOpts}
                       ref={playerRef as (LegacyRef<YouTube> | undefined)}
                       onReady={(event) => {
                         void event.target.playVideo();

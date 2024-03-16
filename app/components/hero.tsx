@@ -19,10 +19,11 @@ export default function Hero() {
             thumbWidth={1681}
             thumbHeight={1681}
             thumbAlt="Video thumbnail"
-            video={process.env.NEXT_PUBLIC_CLOUDINARY_VIDEO_PATH + '/v1709148851/Uncategorized/ewvfko5dr83rj8es86ej.webm'}
+            video={''}
             videoTitle={'The journey has just begun'}
             videoWidth={1920}
             videoHeight={1080}
+            youtubeId={'UAG9iTOTUFw'}
           />
         </div>
       </div>
