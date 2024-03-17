@@ -8,9 +8,9 @@ import Timer from 'react-compound-timerv3';
 import useGameStore from '@/stores/game-store';
 import BaseButton from '@/components/buttons/base';
 import TextSpecial from '@/components/text-special';
-import calculateScore from '@/utils/functions/calculate-score';
+import calculateScore from '@/functions/calculate-score';
 import CharacterBadge from '@/components/character-badge';
-import { random } from '@/utils/constants';
+import { random, messages } from '@/constants';
 
 type YouTubePlayerType = {
   internalPlayer: {
@@ -31,8 +31,7 @@ export default function Clip() {
   const [playing, setPlaying] = useState(true);
   const [revealed, setRevealed] = useState(false);
   const playerRef = useRef<YouTubePlayer & YouTubePlayerType | null>(null);
-  const secretMessage = 'ok no more oriohn jam';
-  const [timerText, setTimerText] = useState(secretMessage)
+  const [timerText, setTimerText] = useState(messages.secret)
 
   const handlePlayPause = () => {
     if (playerRef.current?.internalPlayer) {
@@ -68,7 +67,7 @@ export default function Clip() {
     setStarted(false);
     setPlaying(true);
     setRevealed(false);
-    setTimerText(secretMessage);
+    setTimerText(messages.secret);
     void fetchClips();
   }
 

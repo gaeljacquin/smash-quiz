@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
-import { nowGael } from '@/utils/constants';
+import { nowGael } from '@/constants';
 
 export default function Footer() {
   return (

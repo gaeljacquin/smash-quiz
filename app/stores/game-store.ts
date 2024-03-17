@@ -4,7 +4,7 @@ import { devtools, persist } from 'zustand/middleware';
 import type { CharacterPlus } from '~/interfaces/character';
 import type { Roster } from '~/interfaces/roster';
 import { blankClip, type Clip } from '~/interfaces/clip';
-import selectClip from '@/utils/functions/select-clip';
+import selectClip from '@/functions/select-clip';
 
 interface GameStore {
   fetchRoster: () => Promise<void>

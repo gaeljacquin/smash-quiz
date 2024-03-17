@@ -1,4 +1,4 @@
-import { messages } from '@/utils/constants';
+import { messages } from '@/constants';
 
 const MobileWarning = () => {
   return (

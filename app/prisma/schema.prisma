@@ -22,6 +22,7 @@ model clip {
   youtube_id         String   @db.VarChar(100)
   cloudinary_version String?  @db.VarChar(100)
   answer             answer[]
+  logs               logs[]
 }
 
 model fighter {
@@ -36,4 +37,14 @@ model fighter {
   chara_0     String   @db.VarChar(100)
   chara_5     String   @db.VarChar(100)
   answer      answer[]
+}
+
+model logs {
+  id       Int       @id @default(autoincrement())
+  clip_id  Int?
+  score    Int
+  answers  Int
+  selected String[]
+  played   DateTime? @db.Timestamp(6)
+  clip     clip?     @relation(fields: [clip_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
 }
