@@ -1,0 +1,14 @@
+{
+  "name": "smash-quiz",
+  "version": "1.0.0",
+  "description": "Smash Quiz",
+  "author": "Gaël Jacquin",
+  "private": true,
+  "engines": {
+    "node": ">=18.x"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": []
+}
