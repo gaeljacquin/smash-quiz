@@ -1,4 +1,4 @@
-export class GameLogsDto {
+export class GameLogDto {
   clip_id: number;
   score: number;
   answers: number;
