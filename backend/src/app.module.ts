@@ -6,6 +6,8 @@ import { GameLogController } from '~/src/gamelog/gamelog.controller';
 import { redisClientFactory } from '~/src/redis/redis-client.factory';
 import { RedisRepository } from '~/src/redis/redis.repository';
 import { RedisService } from '~/src/redis/redis.service';
+import { RabbitMQConsumerService } from '~/src/rabbitmq/rmq-consumer.service';
+import { RabbitMQProducerService } from '~/src/rabbitmq/rmq-producer.service';
 // import { PrismaService } from '~/src/services/prisma.service';
 
 @Module({
@@ -16,6 +18,8 @@ import { RedisService } from '~/src/redis/redis.service';
     redisClientFactory,
     RedisRepository,
     RedisService,
+    RabbitMQProducerService,
+    RabbitMQConsumerService,
     AppController,
   ],
 })

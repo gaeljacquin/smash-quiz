@@ -1,21 +1,19 @@
 import { Controller, Post, Body } from '@nestjs/common';
 import { GameLogDto } from '~/src/gamelog/gamelog.dto';
-import { RedisService } from '~/src/redis/redis.service';
+import { RabbitMQProducerService } from '~/src/rabbitmq/rmq-producer.service';
 
 @Controller('log')
 export class GameLogController {
-  constructor(private readonly redisService: RedisService) {}
+  constructor(
+    private readonly rabbitMQProducerService: RabbitMQProducerService,
+  ) {}
 
   @Post()
   async create(@Body() gamelogDto: GameLogDto) {
     gamelogDto.played = new Date(gamelogDto.played);
 
-    const key = `gamelog:${Date.now()}`;
-    const createdGameLog = await this.redisService.saveDataAsHash(
-      key,
-      gamelogDto,
-    );
+    const gameLog = await this.rabbitMQProducerService.sendToQueue(gamelogDto);
 
-    return { message: 'Game logged! 😀', createdGameLog };
+    return { message: 'Game log added to queue! 😀', gameLog };
   }
 }

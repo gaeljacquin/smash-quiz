@@ -14,7 +14,8 @@ export class RedisService {
     return data ? JSON.parse(data) : null;
   }
 
-  async saveDataAsHash(key: string, data: any): Promise<void> {
+  async saveDataAsHash(data: any): Promise<void> {
+    const key = `gamelog:${Date.now()}`;
     const hashData = Object.entries(data).flat();
     await this.redisRepository.hmset(key, hashData);
   }
