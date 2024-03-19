@@ -8,7 +8,7 @@ import { RedisPubSubService } from '~/src/redis/redis-pubsub.service';
 import { RabbitMQConsumerService } from '~/src/rabbitmq/rmq-consumer.service';
 import { RabbitMQProducerService } from '~/src/rabbitmq/rmq-producer.service';
 import { DbService } from '~/src/services/db.service';
-import { PrismaService } from '~/src/prisma/prisma.service';
+import { PrismaService } from '~/src/services/prisma.service';
 import { RedisService } from './redis/redis.service';
 import { RedisRepository } from './redis/redis.repository';
 import { GameLogsService } from './gamelog/gamelog.service';
