@@ -10,8 +10,6 @@ export class GameLogController {
 
   @Post()
   async create(@Body() gamelogDto: GameLogDto) {
-    gamelogDto.played = new Date(gamelogDto.played);
-
     const gameLog = await this.rabbitMQProducerService.sendToQueue(gamelogDto);
 
     return { message: 'Game log added to queue! 😀', gameLog };

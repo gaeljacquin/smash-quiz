@@ -7,6 +7,7 @@ export class RabbitMQProducerService {
     const connection = await connect(process.env.RABBITMQ_URL);
     const channel = await connection.createChannel();
     const queue = process.env.RABBITMQ_QUEUE;
+    data.played = new Date(data.played * 1000);
 
     await channel.assertQueue(queue, { durable: true });
     await channel.sendToQueue(queue, Buffer.from(JSON.stringify(data)));

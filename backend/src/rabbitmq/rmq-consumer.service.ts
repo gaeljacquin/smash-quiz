@@ -1,13 +1,15 @@
 import { Injectable } from '@nestjs/common';
-import { MessagePattern } from '@nestjs/microservices';
 import { connect } from 'amqplib';
 import { RedisService } from '~/src/redis/redis.service';
+import { RedisPubSubService } from '~/src/redis/redis-pubsub.service';
 
 @Injectable()
 export class RabbitMQConsumerService {
-  constructor(private readonly redisService: RedisService) {}
+  constructor(
+    private readonly redisService: RedisService,
+    private readonly redisPubSubService: RedisPubSubService,
+  ) {}
 
-  @MessagePattern('rabbit-mq-producer')
   async listenToQueue() {
     const connection = await connect(process.env.RABBITMQ_URL); // replace with your RabbitMQ server url
     const channel = await connection.createChannel();
@@ -25,6 +27,16 @@ export class RabbitMQConsumerService {
           await this.redisService.saveDataAsHash(data);
           channel.ack(msg);
           console.log({ message: 'Game logged! 😀', data });
+          const redisChannel = process.env.REDIS_CHANNEL;
+
+          await this.redisPubSubService.publish(
+            redisChannel,
+            msg.content.toString(),
+          );
+          console.log({
+            message: 'Game log published! 😀',
+            msg: msg.content.toString(),
+          });
         } catch (error) {
           console.log({ message: error.message });
         }

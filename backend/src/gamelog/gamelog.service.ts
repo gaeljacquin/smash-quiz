@@ -1,14 +1,21 @@
 import { Injectable } from '@nestjs/common';
-import { PrismaService } from '~/src/prisma/prisma.service';
-import { logs, Prisma } from '@prisma/client';
+import { RedisPubSubService } from '~/src/redis/redis-pubsub.service';
+import { DbService } from '~/src/services/db.service';
 
 @Injectable()
 export class GameLogsService {
-  constructor(private prisma: PrismaService) {}
+  constructor(
+    private readonly redisPubSubService: RedisPubSubService,
+    private readonly dbService: DbService,
+  ) {}
 
-  async createLog(data: Prisma.logsCreateInput): Promise<logs> {
-    return this.prisma.logs.create({
-      data,
-    });
+  onModuleInit(): void {
+    this.redisPubSubService.subscribe(
+      process.env.REDIS_CHANNEL,
+      async (message) => {
+        const data = JSON.parse(message);
+        await this.dbService.saveLog(data);
+      },
+    );
   }
 }
