@@ -1,12 +1,21 @@
-import type { ReactElement } from 'react';
+'use client'
+
+import { useEffect, type ReactElement } from 'react';
 
 import CharacterGrid from '@/components/character-grid';
 import ResetButton from '@/components/buttons/reset';
 import GlowButton from '@/components/buttons/glow';
 import Clip from '@/components/clip';
+import useGameStore from '@/stores/game-store';
 
 export default function Game(): ReactElement {
+  const { fetchClips, clipRandomizer, resetToggles } = useGameStore();
   const bg = process.env.NODE_ENV === 'production' ? 'bg-transparent' : 'bg-gray-200';
+
+  useEffect(() => {
+    resetToggles();
+    void fetchClips().then(void clipRandomizer(true));
+  }, [fetchClips, clipRandomizer, resetToggles]);
 
   return (
     <>

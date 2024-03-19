@@ -3,10 +3,10 @@
 import { type ReactElement, useEffect } from 'react'
 
 import CharacterItem from '@/components/character-item'
-import useRosterStore from '@/stores/game-store'
+import useGameStore from '@/stores/game-store'
 
 export default function CharacterGrid(): ReactElement {
-  const { roster, fetchRoster } = useRosterStore();
+  const { roster, fetchRoster } = useGameStore();
 
   useEffect(() => {
     void fetchRoster();

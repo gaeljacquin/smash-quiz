@@ -2,11 +2,11 @@
 
 import type { ReactElement } from 'react';
 
-import useRosterStore from '@/stores/game-store';
+import useGameStore from '@/stores/game-store';
 import BaseButton from '~/components/buttons/base';
 
 export default function ResetButton(): ReactElement {
-  const { resetToggles, toggledCharacters, characterSelectionBlocked } = useRosterStore()
+  const { resetToggles, toggledCharacters, characterSelectionBlocked } = useGameStore()
 
   return (
     <BaseButton

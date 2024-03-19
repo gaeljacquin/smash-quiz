@@ -15,6 +15,7 @@ interface GameStore {
   toggledCharacters: Array<string>
   toggleGlow: () => void
   fetchClips: () => Promise<void>
+  clipRandomizer: (newSession: boolean) => void
   clips: Clip[]
   currentClip: Clip
   characterSelectionBlocked: boolean
@@ -30,7 +31,8 @@ export const defaultGameState = {
   toggledCharacters: [],
   toggleGlow: null,
   fetchClips: null,
-  clips: [blankClip],
+  clipRandomizer: null,
+  clips: [],
   currentClip: blankClip,
   characterSelectionBlocked: true,
   blockCharacterSelection: null,
@@ -82,14 +84,15 @@ const useGameStore = create<GameStore>()(
             const clips = await res.json() as Clip[];
 
             set({ clips });
-
-            const { currentClip: selectedClip } = get();
-            const clip = selectClip(clips, selectedClip.id);
-
-            set({ currentClip: clip });
           } catch (error) {
             console.error('Error fetching clips or setting clip: ', error)
           }
+        },
+        clipRandomizer: (newSession: boolean) => {
+          const { clips, currentClip: selectedClip } = get();
+          const clip = selectClip(clips, selectedClip.id, newSession);
+
+          set({ currentClip: clip });
         },
         blockCharacterSelection: (value: boolean) => {
           set({ characterSelectionBlocked: value });
@@ -98,9 +101,8 @@ const useGameStore = create<GameStore>()(
     ), {
       name: 'GameStore',
       partialize: (state) => {
-        const { glow, toggledCharacters, characterSelectionBlocked, ...rest } = state;
+        const { glow, characterSelectionBlocked, ...rest } = state;
         void glow;
-        void toggledCharacters;
         void characterSelectionBlocked;
 
         return rest;

@@ -2,11 +2,11 @@
 
 import type { ReactElement } from 'react';
 
-import useRosterStore from '@/stores/game-store'
+import useGameStore from '@/stores/game-store'
 import BaseButton from '~/components/buttons/base';
 
 export default function GlowButton(): ReactElement {
-  const { glow, toggleGlow, toggledCharacters, characterSelectionBlocked } = useRosterStore()
+  const { glow, toggleGlow, toggledCharacters, characterSelectionBlocked } = useGameStore()
 
   return (
     <BaseButton
