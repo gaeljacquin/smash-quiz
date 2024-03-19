@@ -3,10 +3,10 @@
 import Image from 'next/image';
 
 import type { CharacterItemProps } from '@/interfaces/character';
-import useRosterStore from '@/stores/game-store';
+import useGameStore from '@/stores/game-store';
 
 export default function CharacterItem(props: CharacterItemProps) {
-  const { currentClip: clip, roster, toggleCharacter, toggledCharacters, glow, characterSelectionBlocked } = useRosterStore();
+  const { currentClip: clip, roster, toggleCharacter, toggledCharacters, glow, characterSelectionBlocked } = useGameStore();
   const character = roster.find((character) => character.smash_id === props.smashId);
   const toggled = character ? toggledCharacters.includes(character.smash_id) : false;
   let brightness = '';

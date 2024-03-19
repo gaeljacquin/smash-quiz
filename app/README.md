@@ -1,2 +1,2 @@
-# smash-quiz-app
-Smash Quiz App
+# smash-quiz-game
+Smash Quiz Game

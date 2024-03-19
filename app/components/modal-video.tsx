@@ -1,13 +1,12 @@
 'use client'
 
 import { useState, useRef, Fragment } from 'react'
-import type { StaticImageData } from 'next/image'
+import Image, { type StaticImageData } from 'next/image'
 import { Dialog, Transition } from '@headlessui/react'
-import Image from 'next/image'
+import YouTube from 'react-youtube'
 
 import { handleLoadStart } from '~/components/video'
-import YouTube from 'react-youtube'
-import { random } from '@/utils/constants'
+import { random } from '@/constants'
 
 interface ModalVideoProps {
   thumb: StaticImageData | string
@@ -68,8 +67,8 @@ export default function ModalVideo({
             enter="transition ease-out duration-200"
             enterFrom="opacity-0 scale-95"
             enterTo="opacity-100 scale-100"
-            leave="ttransition ease-out duration-200"
-            leaveFrom="oopacity-100 scale-100"
+            leave="transition ease-out duration-200"
+            leaveFrom="opacity-100 scale-100"
             leaveTo="opacity-0 scale-95"
           >
             <div className="max-w-6xl mx-auto h-full flex items-center">

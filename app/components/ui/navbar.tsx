@@ -3,8 +3,8 @@
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 
-import Logo from './logo'
-import MobileMenu from './mobile-menu'
+import Logo from '~/components/ui/logo';
+import MobileMenu from '~/components/ui/mobile-menu';
 
 export default function Navbar() {
   const [top, setTop] = useState<boolean>(true);

@@ -1,8 +1,8 @@
 {
-  "name": "smash-quiz",
-  "description": "Smash Quiz",
+  "name": "smash-quiz-game",
+  "description": "Smash Quiz Game",
   "author": "Gaël Jacquin",
-  "version": "2.2.0",
+  "version": "2.3.0",
   "private": true,
   "engines": {
     "node": ">=18.x"
