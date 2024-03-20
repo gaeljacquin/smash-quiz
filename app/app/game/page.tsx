@@ -14,7 +14,7 @@ export default function Game(): ReactElement {
 
   useEffect(() => {
     resetToggles();
-    void fetchClips().then(void clipRandomizer(true));
+    void fetchClips().then(() => clipRandomizer(true));
   }, [fetchClips, clipRandomizer, resetToggles]);
 
   return (
