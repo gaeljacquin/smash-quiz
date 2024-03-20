@@ -32,7 +32,7 @@ export const defaultGameState = {
   toggleGlow: null,
   fetchClips: null,
   clipRandomizer: null,
-  clips: [],
+  clips: [blankClip],
   currentClip: blankClip,
   characterSelectionBlocked: true,
   blockCharacterSelection: null,
@@ -89,8 +89,8 @@ const useGameStore = create<GameStore>()(
           }
         },
         clipRandomizer: (newSession: boolean) => {
-          const { clips, currentClip: selectedClip } = get();
-          const clip = selectClip(clips, selectedClip.id, newSession);
+          const { clips, currentClip } = get();
+          const clip = selectClip(clips, currentClip.id, newSession);
 
           set({ currentClip: clip });
         },
