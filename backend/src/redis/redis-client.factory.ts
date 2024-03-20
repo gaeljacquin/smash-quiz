@@ -4,18 +4,7 @@ import { Redis } from 'ioredis';
 export const RedisClientFactory: FactoryProvider<Redis> = {
   provide: 'RedisClient',
   useFactory: () => {
-    const redisOptions = {
-      host: process.env.REDIS_HOST || '',
-      port: +process.env.REDIS_PORT,
-      username: process.env.REDIS_USERNAME,
-      password: process.env.REDIS_PASSWORD || '',
-    };
-
-    if (process.env.NODE_ENV === 'development') {
-      Object.assign(redisOptions, { tls: {} });
-    }
-
-    const redisInstance = new Redis(redisOptions);
+    const redisInstance = new Redis(process.env.REDIS_URL);
 
     redisInstance.on('error', (e) => {
       console.dir(redisInstance);
