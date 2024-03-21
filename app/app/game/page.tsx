@@ -24,7 +24,15 @@ export default function Game(): ReactElement {
           <Clip />
         </div>
         <div className={`items-center justify-center ${bg}`}>
-          <div className="flex grid grid-cols-12 sm:grid-cols-6 lg:grid-cols-10 lg:gap-4 p-10">
+          <div className="
+            flex grid p-10
+            grid-cols-4 gap-6
+            xs:grid-cols-4 xs:gap-6
+            sm:grid-cols-4 sm:gap-4
+            lg:grid-cols-4 lg:gap-4
+            xl:grid-cols-6 xl:gap-8
+            2xl:grid-cols-10 2xl:gap-6
+          ">
             <CharacterGrid />
           </div>
           <div className="container mx-auto flex flex-col sm:flex-row gap-8 justify-center items-center mt-10">
