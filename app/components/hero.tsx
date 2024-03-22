@@ -15,7 +15,7 @@ export default function Hero() {
           </div>
 
           <ModalVideo
-            thumb={process.env.NEXT_PUBLIC_CLOUDINARY_IMAGE_PATH + ',c_limit/v1710283363/Uncategorized/mural.webp'}
+            thumb={process.env.uncategorizedPath + 'mural.webp'}
             thumbWidth={1681}
             thumbHeight={1681}
             thumbAlt="Video thumbnail"

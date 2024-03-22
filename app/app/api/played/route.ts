@@ -4,7 +4,7 @@ export async function POST(req: NextRequest) {
   const request = await req.json() as NextRequest;
 
   try {
-    const response = await fetch(`${process.env.NEXT_BACKEND_URL}/log`, {
+    const response = await fetch(`${process.env.backendUrl}/log`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

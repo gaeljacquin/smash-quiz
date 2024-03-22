@@ -9,8 +9,8 @@ export async function GET() {
         f.smash_id,
         f.simple_name,
         f.name_en_us,
-        ${process.env.NEXT_CLOUDINARY_IMAGE_PATH} || '/' || f.chara_0 || '/SSBU Roster/' || f.simple_name || '/chara_0_' || f.simple_name || '_00.webp' AS partial_img,
-        ${process.env.NEXT_CLOUDINARY_IMAGE_PATH} || '/' || f.chara_5 || '/SSBU Roster/' || f.simple_name || '/chara_5_' || f.simple_name || '_00.webp' AS full_img
+        ${process.env.characterImagePath} || simple_name || '/chara_0_' || f.simple_name || '_00.png' AS partial_img,
+        ${process.env.characterImagePath} || simple_name || '/chara_5_' || f.simple_name || '_00.png' AS full_img
       FROM
         fighter f
       ;

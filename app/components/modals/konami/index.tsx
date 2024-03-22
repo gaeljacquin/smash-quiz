@@ -8,12 +8,13 @@ export default function KonamiModal({ isOpen, onClose }: { isOpen: boolean, onCl
     <>
       <BaseModal onClose={onClose} isOpen={isOpen}>
         <Image
-          src={process.env.NEXT_PUBLIC_CLOUDINARY_IMAGE_PATH + '/v1709168038/Uncategorized/captain-falcon-gangam-style.gif'}
+          src={process.env.uncategorizedPath + 'captain-falcon-gangam-style.gif'}
           alt={'Captain Falcon Gangam Style GIF'}
           className="object-contain h-96 w-96"
           width="0"
           height="0"
           sizes="200vw"
+          unoptimized
         />
       </BaseModal>
     </>

@@ -13,10 +13,19 @@ const config = {
         hostname: 'res.cloudinary.com',
         pathname: '**',
       },
+      {
+        protocol: 'https',
+        hostname: 'ahacverhpougzlzojfyo.supabase.co',
+        pathname: '**',
+      },
     ],
   },
   env: {
-    imagePath: `${process.env.NEXT_PUBLIC_CLOUDINARY_IMAGE_PATH}`,
+    supabaseUrl: `${process.env.NEXT_PUBLIC_SUPABASE_URL}`,
+    characterImagePath: `${process.env.NEXT_PUBLIC_SUPABASE_URL + process.env.NEXT_PUBLIC_SUPABASE_BUCKET_PATH + process.env.NEXT_PUBLIC_SUPABASE_SSBU_ROSTER_BUCKET}`,
+    gameClipPath: `${process.env.NEXT_PUBLIC_SUPABASE_URL + process.env.NEXT_PUBLIC_SUPABASE_BUCKET_PATH + process.env.NEXT_PUBLIC_SUPABASE_SSBU_CLIPS_BUCKET}`,
+    uncategorizedPath: `${process.env.NEXT_PUBLIC_SUPABASE_URL + process.env.NEXT_PUBLIC_SUPABASE_BUCKET_PATH + process.env.NEXT_PUBLIC_SUPABASE_UNCATEGORIZED_BUCKET}`,
+    backendUrl: `${process.env.NEXT_BACKEND_URL}`,
   },
 };
 

@@ -148,7 +148,7 @@ export default function Clip() {
         <div className="flex mb-12">
           <div className={`${revealed ? 'hidden' : ''}`}>
             <Image
-              src={process.env.NEXT_PUBLIC_CLOUDINARY_IMAGE_PATH + '/v1709157561/Uncategorized/mario_block.gif'}
+              src={process.env.uncategorizedPath + 'mario_block.gif'}
               alt="Mario block"
               className="object-contain h-[390px] w-[480px]"
               width="0"
