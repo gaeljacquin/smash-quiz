@@ -7,19 +7,11 @@ export const env = createEnv({
    * isn't built with invalid env vars.
    */
   server: {
-    DATABASE_URL: z
-      .string()
-      .url()
-      .refine(
-        (str) => !str.includes("POSTGRESQL_URL_HERE"),
-        "You forgot to change the default URL"
-      ),
     NODE_ENV: z
       .enum(["development", "test", "production"])
       .default("development"),
     NEXT_CLOUDINARY_IMAGE_PATH: z.string(),
     NEXT_CLOUDINARY_VIDEO_PATH: z.string(),
-    NEXT_YOUTUBE_VIDEO_URL: z.string(),
     NEXT_BACKEND_URL: z.string(),
   },
 
@@ -32,6 +24,10 @@ export const env = createEnv({
     // NEXT_PUBLIC_CLIENTVAR: z.string(),
     NEXT_PUBLIC_CLOUDINARY_IMAGE_PATH: z.string(),
     NEXT_PUBLIC_CLOUDINARY_VIDEO_PATH: z.string(),
+    NEXT_PUBLIC_SUPABASE_URL: z.string(),
+    NEXT_PUBLIC_SUPABASE_SSBU_ROSTER_BUCKET: z.string(),
+    NEXT_PUBLIC_SUPABASE_SSBU_CLIPS_BUCKET: z.string(),
+    NEXT_PUBLIC_SUPABASE_UNCATEGORIZED_BUCKET: z.string(),
   },
 
   /**
@@ -39,14 +35,16 @@ export const env = createEnv({
    * middlewares) or client-side so we need to destruct manually.
    */
   runtimeEnv: {
-    DATABASE_URL: process.env.DATABASE_URL,
     NODE_ENV: process.env.NODE_ENV,
     NEXT_CLOUDINARY_IMAGE_PATH: process.env.NEXT_PUBLIC_CLOUDINARY_IMAGE_PATH,
     NEXT_CLOUDINARY_VIDEO_PATH: process.env.NEXT_PUBLIC_CLOUDINARY_VIDEO_PATH,
-    NEXT_YOUTUBE_VIDEO_URL: process.env.NEXT_YOUTUBE_VIDEO_URL,
     NEXT_BACKEND_URL: process.env.NEXT_BACKEND_URL,
     NEXT_PUBLIC_CLOUDINARY_IMAGE_PATH: process.env.NEXT_PUBLIC_CLOUDINARY_IMAGE_PATH,
     NEXT_PUBLIC_CLOUDINARY_VIDEO_PATH: process.env.NEXT_PUBLIC_CLOUDINARY_VIDEO_PATH,
+    NEXT_PUBLIC_SUPABASE_URL: process.env.NEXT_PUBLIC_SUPABASE_URL,
+    NEXT_PUBLIC_SUPABASE_SSBU_ROSTER_BUCKET: process.env.NEXT_PUBLIC_SUPABASE_SSBU_ROSTER_BUCKET,
+    NEXT_PUBLIC_SUPABASE_SSBU_CLIPS_BUCKET: process.env.NEXT_PUBLIC_SUPABASE_SSBU_CLIPS_BUCKET,
+    NEXT_PUBLIC_SUPABASE_UNCATEGORIZED_BUCKET: process.env.NEXT_PUBLIC_SUPABASE_UNCATEGORIZED_BUCKET,
     // NEXT_PUBLIC_CLIENTVAR: process.env.NEXT_PUBLIC_CLIENTVAR,
   },
   /**

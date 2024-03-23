@@ -8,7 +8,7 @@ export default function Footer() {
     <footer className="footer footer-center p-10 max-w-6xl mx-auto border-t border-gray-200">
       <aside>
         <Image
-          src={process.env.NEXT_PUBLIC_CLOUDINARY_IMAGE_PATH + '/v1709227789/main/logo.webp'}
+          src={process.env.uncategorizedPath + 'logo.webp'}
           alt="Gaël's Logo"
           className="mx-auto w-16 h-auto"
           sizes="100vw"

@@ -13,12 +13,13 @@ export default function SixtyNineModal({ isOpen, onClose }: { isOpen: boolean, o
           format={'webm'}
         /> */}
         <Image
-          src={process.env.NEXT_PUBLIC_CLOUDINARY_IMAGE_PATH + '/v1710284797/Uncategorized/nice.gif'}
+          src={process.env.uncategorizedPath + 'nice.gif'}
           alt={'Nice GIF'}
           className="object-contain h-96 w-96"
           width="0"
           height="0"
           sizes="200vw"
+          unoptimized
         />
       </BaseModal>
     </>
