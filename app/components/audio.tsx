@@ -1,4 +1,4 @@
-import type { SyntheticEvent } from "react";
+import type { RefObject, SyntheticEvent } from "react";
 
 export function handleLoadStart(event: SyntheticEvent<HTMLAudioElement>): void {
   const audioElement = event.target as HTMLAudioElement;
@@ -7,14 +7,11 @@ export function handleLoadStart(event: SyntheticEvent<HTMLAudioElement>): void {
 
 type AudioProps = {
   src: string,
-  started?: boolean,
-  setStarted?: (arg0: boolean) => void,
-  handleStart?: () => void,
   handlePlayPause?: () => void,
-  audioRef: any,
+  audioRef: RefObject<HTMLAudioElement>,
 }
 
-export function Audio({ src, started, setStarted, handleStart, handlePlayPause, audioRef }: AudioProps) {
+export function Audio({ src, handlePlayPause, audioRef }: AudioProps) {
   return (
     <audio
       ref={audioRef}
