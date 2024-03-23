@@ -8,6 +8,7 @@ export async function GET() {
     const data: Array<Clip> = await prisma.$queryRaw`
       SELECT
         c.id,
+        c.clip_name,
         c.timer,
         c.youtube_id,
         array_agg(a.smash_id) as fighters
