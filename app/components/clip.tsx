@@ -1,7 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-import { useEffect, useRef, useState, useCallback } from 'react';
+import { useRef, useState, useCallback } from 'react';
 
 import useGameStore from '@/stores/game-store';
 import BaseButton from '@/components/buttons/base';

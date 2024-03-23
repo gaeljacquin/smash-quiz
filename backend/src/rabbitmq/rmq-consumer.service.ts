@@ -24,7 +24,7 @@ export class RabbitMQConsumerService {
         try {
           console.log(' [x] Received %s', msg.content.toString());
           const data = JSON.parse(msg.content.toString());
-          await this.redisService.saveDataAsHash(data);
+          await this.redisService.saveLogAsHash(data);
           channel.ack(msg);
           console.log({ message: 'Game logged! 😀', data });
           const redisChannel = process.env.REDIS_CHANNEL;

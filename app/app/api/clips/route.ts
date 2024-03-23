@@ -1,21 +1,16 @@
 import { NextResponse } from 'next/server';
 
-import prisma from '~/prisma/client';
 import type { Clip } from '@/interfaces/clip';
 
 export async function GET() {
   try {
-    const data: Array<Clip> = await prisma.$queryRaw`
-      SELECT
-        c.id,
-        c.clip_name,
-        c.timer,
-        c.youtube_id,
-        array_agg(a.smash_id) as fighters
-      FROM clip c
-      JOIN answer a ON c.id = a.clip_id
-      GROUP BY c.id;
-    `;
+    const response = await fetch(`${process.env.backendUrl}/clips/all`);
+
+    if (!response.ok) {
+      throw new Error(`Failed to fetch data: ${response.statusText}`);
+    }
+
+    const data = await response.json() as Clip[];
 
     return NextResponse.json(data);
   } catch (error) {
