@@ -19,11 +19,11 @@ export default function Hero() {
             thumbWidth={1681}
             thumbHeight={1681}
             thumbAlt="Video thumbnail"
-            video={''}
-            videoTitle={'The journey has just begun'}
+            video={process.env.uncategorizedPath + 'Smash%20Quiz%20Demo.mp4'}
+            videoTitle={'How to Play'}
             videoWidth={1920}
             videoHeight={1080}
-            youtubeId={'UAG9iTOTUFw'}
+            // youtubeId={'A8nitPWsGNY'}
           />
         </div>
       </div>

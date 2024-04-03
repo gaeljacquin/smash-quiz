@@ -197,7 +197,7 @@ export default function Clip() {
               </div>
             </>
           :
-            <div className="mb-64">
+            <div className="sm:hidden md:mb-64">
               <h2 className="text-2xl font-semibold text-transparent">
                 {messages.secret}
               </h2>
