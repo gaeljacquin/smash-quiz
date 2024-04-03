@@ -1,49 +1,192 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
+/* Additional styles */
+@import 'css/utility-patterns.css';
+@import 'css/range-slider.css';
+@import 'css/toggle-switch.css';
+@import 'css/theme.css';
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+@import 'tailwindcss/utilities';
+
+/* Additional Tailwind directives: https://tailwindcss.com/docs/functions-and-directives/#responsive */
+@layer utilities {
+  .rtl {
+    direction: rtl;
   }
-}
-
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
 }
 
 @layer components {
   .shadow-animate {
-    box-shadow:  0px  0px  20px  10px #48abe0;
+    box-shadow:  0px  0px  10px  5px #48abe0;
     animation: shadows  1.5s infinite;
+  }
+
+  .shadow-animate-2 {
+    box-shadow:  0px  0px  10px  5px #48abe0;
+    animation: shadows  1.5s forwards;
   }
 
   @keyframes shadows {
     0% {
-      box-shadow:  0px  0px  20px  10px #48abe0;
+      box-shadow:  0px  0px  10px  5px #48abe0;
     }
     50% {
-      box-shadow:  0px  0px  20px  10px blueviolet;
+      box-shadow:  0px  0px  10px  5px blueviolet;
     }
     75% {
-      box-shadow:  0px  0px  20px  10px rebeccapurple;
+      box-shadow:  0px  0px  10px  5px rebeccapurple;
     }
     100% {
-      box-shadow:  0px  0px  20px  10px #48abe0;
+      box-shadow:  0px  0px  10px  5px #48abe0;
     }
+  }
+
+  .custom-enlarge {
+    width: 12rem !important;
+  }
+
+  .close-menu,
+  .open-menu {
+    position: absolute;
+    cursor: pointer;
+    display: none;
+  }
+
+  .open-menu {
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+  }
+
+  .close-menu {
+    top: 20px;
+    right: 20px;
+  }
+
+  #check {
+    display: none;
+  }
+
+  @media (max-width: 800px) {
+    .menu {
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 73%;
+      height: 100vh;
+      position: fixed;
+      top: 0;
+      right: -100%;
+      z-index: 100;
+      background-color: #000;
+      color: #fff;
+      transition: all 0.5s ease-in-out;
+      text-transform: uppercase;
+      font-size: 24px;
+    }
+
+    .menu li {
+      margin-top: 40px;
+    }
+
+    .menu li a {
+      padding: 10px;
+    }
+
+    .close-menu,
+    .open-menu {
+      display: block;
+    }
+
+    #check:checked ~ .menu {
+      right: 0;
+    }
+  }
+
+  nav {
+    border-bottom: none;
+  }
+
+  nav.scrolled {
+    border-bottom: 1px solid #e2e8f0;
+  }
+
+  /** Borrowed from TailGrids */
+  .bg-primary {
+    --tw-bg-opacity: 1;
+    background-color: rgb(55 88 249 / var(--tw-bg-opacity));
+  }
+
+  .text-body-color {
+    --tw-text-opacity: 1;
+    color: rgb(99 115 129 / var(--tw-text-opacity));
+  }
+
+  .text-dark-6 {
+    --tw-text-opacity: 1;
+    color: rgb(156 163 175 / var(--tw-text-opacity));
+  }
+
+  .dark\:text-dark-6 {
+    --tw-text-opacity: 1;
+    color: rgb(156 163 175 / var(--tw-text-opacity));
+  }
+
+  .dark\:file\:text-dark-6::file-selector-button {
+    --tw-text-opacity: 1;
+    color: rgb(156 163 175 / var(--tw-text-opacity));
+  }
+
+  .dark\:hover\:text-dark-6:hover {
+    --tw-text-opacity: 1;
+    color: rgb(156 163 175 / var(--tw-text-opacity));
+  }
+
+  .shadow-portfolio {
+    --tw-shadow: 0px 4px 30px 0px rgba(0, 0, 0, 0.08);
+    --tw-shadow-colored: 0px 4px 30px 0px var(--tw-shadow-color);
+    box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+  }
+
+  .dark-shadow-box-dark {
+    --tw-shadow: 0px 10px 15px 0px rgba(5, 13, 29, 0.18);
+    --tw-shadow-colored: 0px 10px 15px 0px var(--tw-shadow-color);
+    box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+  }
+
+  .activeClasses {
+    @apply bg-gael-green text-white;
+  }
+
+  .inactiveClasses {
+    @apply text-body-color dark:text-dark-6 hover:bg-primary hover:text-white;
+  }
+
+  .border-stroke {
+    --tw-border-opacity: 1;
+    border-color: rgb(223 228 234 / var(--tw-border-opacity));
+  }
+
+  .dark\:border-dark-3 {
+    --tw-border-opacity: 1;
+    border-color: rgb(55 65 81 / var(--tw-border-opacity));
+  }
+  /** End */
+
+  .contact-form-input {
+    @apply block w-full appearance-none border-0 border-b border-gray-500 bg-transparent py-2.5 px-0 text-sm text-gray-900 focus:border-blue-600 focus:outline-none focus:ring-0
+  }
+
+  .contact-form-label {
+    @apply absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-sm text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:text-blue-600 peer-focus:dark:text-blue-500
+  }
+
+  .contact-form-submit {
+    @apply mt-5 rounded-md bg-black px-10 py-2 text-white hover:shadow-animate
+  }
+
+  .project-card-btn {
+    @apply text-body-color dark:text-dark-6 hover:border-purple-400 hover:bg-purple-500 inline-block rounded-md border border-stroke dark-shadow-box-dark py-[10px] px-7 text-sm font-medium transition hover:text-white
   }
 }
