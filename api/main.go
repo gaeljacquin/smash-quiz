@@ -16,6 +16,8 @@ func init() {
 func main() {
 	r := gin.Default()
 
+	r.SetTrustedProxies(nil)
+
 	r.GET("/", controllers.Home)
 	r.GET("/fighters", controllers.GetFighters)
 	r.GET("/clips", controllers.GetClips)
