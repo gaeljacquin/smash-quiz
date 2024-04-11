@@ -4,7 +4,7 @@ import type { Clip } from '@/interfaces/clip';
 
 export async function GET() {
   try {
-    const response = await fetch(`${process.env.backendUrl}/clips/all`);
+    const response = await fetch(`${process.env.backendUrl}/clips`);
 
     if (!response.ok) {
       throw new Error(`Failed to fetch data: ${response.statusText}`);
