@@ -52,7 +52,7 @@ func SaveLog(c *gin.Context) {
 	err = initializers.RedisClient.HMSet(c.Request.Context(), key, logData).Err()
 
 	if err != nil {
-		log.Printf("Failed to save log game: %v", err)
+		log.Printf("Failed to log game: %v", err)
 		c.JSON(500, gin.H{"error": "Failed to log game"})
 		return
 	}
