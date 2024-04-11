@@ -23,7 +23,18 @@ export default function Clip() {
 
   const logPlay = useCallback(() => {
     const score =  calculateScore(clip.fighters, toggledCharacters);
-    const now = Math.floor(Date.now() / 1000); // Convert milliseconds to seconds
+    const date = new Date();
+    const formatter = new Intl.DateTimeFormat('en-CA', {
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit',
+      hour: '2-digit',
+      minute: '2-digit',
+      second: '2-digit',
+      hour12: false,
+    });
+    const now = formatter.format(date).replace(/,/, '');
+
     const data = {
       clip_id: clip.id,
       score: score,

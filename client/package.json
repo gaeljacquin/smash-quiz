@@ -3,7 +3,7 @@
   "title": "Smash Quiz Game",
   "description": "Guess the characters from the audio snippet",
   "author": "Gaël Jacquin",
-  "version": "2.4.1",
+  "version": "2.4.2",
   "private": true,
   "engines": {
     "node": ">=18.x"
