@@ -16,6 +16,7 @@ func init() {
 func main() {
 	r := gin.Default()
 
+	r.GET("/", controllers.Home)
 	r.GET("/fighters", controllers.GetFighters)
 	r.GET("/clips", controllers.GetClips)
 	r.POST("/log", controllers.SaveLog)
