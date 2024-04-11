@@ -47,6 +47,7 @@ func GetClips(c *gin.Context) {
 	clips, err := rdb.Get(ctx, "clips").Result()
 
 	var results []struct {
+		Id       uint        `json:"id"`
 		ClipName string      `json:"clip_name"`
 		Timer    int         `json:"timer"`
 		Fighters StringArray `gorm:"type:varchar(10)[]" json:"fighters"`
@@ -68,7 +69,7 @@ func GetClips(c *gin.Context) {
         `
 
 		if err := initializers.DB.Raw(query).Scan(&results).Error; err != nil {
-			c.JSON(500, gin.H{"error": "Error fetching clips"})
+			c.JSON(500, gin.H{"error": "Error fetching 'clips'"})
 			return
 		}
 
