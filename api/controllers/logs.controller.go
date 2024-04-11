@@ -57,5 +57,13 @@ func SaveLog(c *gin.Context) {
 		return
 	}
 
+	err = initializers.PublishLog(logData)
+
+	if err != nil {
+		log.Printf("Failed to publish log: %v", err)
+		c.JSON(500, gin.H{"error": "Failed to publish log"})
+		return
+	}
+
 	c.JSON(200, gin.H{"message": "Game logged! 😀"})
 }

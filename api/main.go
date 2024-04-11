@@ -10,7 +10,7 @@ func init() {
 	initializers.LoadEnv()
 	initializers.ConnectToDB()
 	initializers.ConnectToRedis()
-	initializers.SetupRabbitMQ()
+	go initializers.StartConsumer()
 }
 
 func main() {
