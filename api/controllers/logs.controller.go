@@ -1,10 +1,11 @@
 package controllers
 
 import (
+	"encoding/json"
+	"log"
 	"time"
 
 	"github.com/gaeljacquin/smash-quiz/api/initializers"
-	"github.com/gaeljacquin/smash-quiz/api/models"
 	"github.com/gin-gonic/gin"
 )
 
@@ -31,19 +32,30 @@ func SaveLog(c *gin.Context) {
 		return
 	}
 
-	log := models.Log{
-		ClipID:   logRequest.ClipID,
-		Score:    logRequest.Score,
-		Answers:  logRequest.Answers,
-		Selected: logRequest.Selected,
-		Played:   &played,
-	}
-	result := initializers.DB.Create(&log)
+	selectedJSON, err := json.Marshal(logRequest.Selected)
 
-	if result.Error != nil {
-		c.Status(400)
+	if err != nil {
+		c.JSON(400, gin.H{"error": "Failed to serialize \"selected\""})
 		return
 	}
 
-	c.JSON(200, result)
+	logData := map[string]interface{}{
+		"clip_id":  logRequest.ClipID,
+		"score":    logRequest.Score,
+		"answers":  logRequest.Answers,
+		"selected": selectedJSON,
+		"played":   played.Format("2006-01-02 15:04:05"),
+	}
+
+	key := "log:" + time.Now().Format(time.RFC3339Nano)
+
+	err = initializers.RedisClient.HMSet(c.Request.Context(), key, logData).Err()
+
+	if err != nil {
+		log.Printf("Failed to save log game: %v", err)
+		c.JSON(500, gin.H{"error": "Failed to log game"})
+		return
+	}
+
+	c.JSON(200, gin.H{"message": "Game logged! 😀"})
 }

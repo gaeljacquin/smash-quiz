@@ -9,6 +9,8 @@ import (
 func init() {
 	initializers.LoadEnv()
 	initializers.ConnectToDB()
+	initializers.ConnectToRedis()
+	initializers.SetupRabbitMQ()
 }
 
 func main() {
