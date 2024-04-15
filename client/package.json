@@ -1,9 +1,9 @@
 {
   "name": "smash-quiz-game",
   "title": "Smash Quiz Game",
-  "description": "Guess the characters from the audio snippet",
+  "description": "An alternate take on quiz games",
   "author": "Gaël Jacquin",
-  "version": "2.4.4",
+  "version": "2.4.5",
   "private": true,
   "engines": {
     "node": ">=18.x"
