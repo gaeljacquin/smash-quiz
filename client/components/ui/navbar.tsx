@@ -45,9 +45,9 @@ export default function Navbar() {
       <header>
         <nav className="fixed w-full z-20 top-0 left-0 border-b border-gray-200 backdrop-filter backdrop-blur-md dark:border-gray-600">
           <ul className="navigation max-w-[90vw] flex flex-wrap justify-between items-center relative mx-auto py-5">
-            <div className="w-36 h-auto">
+            <div className="w-16 h-auto">
               <Link href="https://gaeljacquin.com">
-                <LottieDynamic />
+                <LottieDynamic loop={false} />
               </Link>
             </div>
 

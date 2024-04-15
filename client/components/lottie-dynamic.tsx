@@ -4,13 +4,13 @@ import dynamic from 'next/dynamic';
 import type { LottieRefCurrentProps } from 'lottie-react';
 import { useRef } from 'react';
 
-import animationData from '@/assets/Animated Logo.json';
+import animationData from '@/assets/animated-logo.json';
 
-export default function LottieDynamic() {
+export default function LottieDynamic({ loop }: { loop: boolean }) {
   const Lottie = dynamic(() => import('lottie-react'), { ssr: false });
   const logoRef = useRef<LottieRefCurrentProps>(null);
 
   return (
-    <Lottie lottieRef={logoRef} animationData={animationData} loop={false} />
+    <Lottie lottieRef={logoRef} animationData={animationData} loop={loop} />
   )
 }

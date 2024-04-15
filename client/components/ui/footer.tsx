@@ -1,12 +1,16 @@
 import Link from 'next/link';
 
 import { nowGael } from '@/constants';
+import LottieDynamic from '@/components/lottie-dynamic';
 
 export default function Footer() {
   return (
     <>
       <section className="text-gray-700 bg-white body-font">
         <div className="container flex flex-col items-center px-8 py-8 mx-auto max-w-7xl sm:flex-row border-t border-gray-200">
+          <span className="w-12">
+            <LottieDynamic loop={true} />
+          </span>
           <p className="mt-4 text-sm text-gray-500 sm:pl-4 sm:mt-0">&copy; 2024{nowGael.currentYear !== 2024 && `-${nowGael.currentYear}`} <span className="text-gael-green">Gaël Jacquin</span>. All rights reserved.</p>
           <span className="inline-flex justify-center mt-4 space-x-5 sm:ml-auto sm:mt-0 sm:justify-start">
             <Link href="https://github.com/gaeljacquin" target="_blank" className="flex justify-center items-center text-gray-600 hover:text-gray-900 bg-white hover:bg-white-100 rounded-full border border-gray-200 hover:border-gray-400 shadow transition duration-150 ease-in-out" aria-label="Github">
