@@ -3,7 +3,7 @@
   "title": "Smash Quiz Game",
   "description": "An alternate take on quiz games",
   "author": "Gaël Jacquin",
-  "version": "2.4.5",
+  "version": "2.4.6",
   "private": true,
   "engines": {
     "node": ">=18.x"
@@ -24,7 +24,7 @@
     "aos": "3.0.0-beta.6",
     "classnames": "^2.5.1",
     "lottie-react": "^2.4.0",
-    "next": "^14.2.0",
+    "next": "^14.2.3",
     "react": "18.2.0",
     "react-compound-timerv3": "^1.0.1",
     "react-dom": "18.2.0",
@@ -58,5 +58,5 @@
   "ct3aMetadata": {
     "initVersion": "7.27.0"
   },
-  "packageManager": "pnpm@8.15.0"
+  "packageManager": "pnpm@9.0.6"
 }
