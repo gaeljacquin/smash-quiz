@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { connect } from 'amqplib';
-import { RedisService } from '~/src/redis/redis.service';
-import { RedisPubSubService } from '~/src/redis/redis-pubsub.service';
+import { RedisService } from '~/redis/redis.service';
+import { RedisPubSubService } from '~/redis/redis-pubsub.service';
 
 @Injectable()
 export class RabbitMQConsumerService {

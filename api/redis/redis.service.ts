@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
-import { RedisRepository } from '~/src/redis/redis.repository';
-import { DbService } from '~/src/services/db.service';
+import { RedisRepository } from '~/redis/redis.repository';
+import { DbService } from '~/services/db.service';
+import json from '@/utils/json';
 
 @Injectable()
 export class RedisService {
@@ -10,7 +11,7 @@ export class RedisService {
   ) {}
 
   async saveData(key: string, data: any): Promise<void> {
-    await this.redisRepository.set(key, JSON.stringify(data));
+    await this.redisRepository.set(key, data);
   }
 
   async getData(key: string): Promise<any | null> {
@@ -25,19 +26,19 @@ export class RedisService {
   }
 
   async getClips(): Promise<any | null> {
-    const key = 'allClips';
+    const key = 'clips';
     let clips = await this.redisRepository.get(key);
 
     if (!clips) {
-      clips = JSON.stringify(await this.dbService.getClips());
+      clips = json(await this.dbService.getClips());
       await this.saveData(key, clips);
     }
 
-    return clips ? JSON.parse(clips) : null;
+    return clips ? clips : null;
   }
 
   async getFighters(): Promise<any | null> {
-    const key = 'allFighters';
+    const key = 'fighters';
     let fighters = await this.redisRepository.get(key);
 
     if (!fighters) {

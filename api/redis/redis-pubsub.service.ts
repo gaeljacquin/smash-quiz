@@ -12,6 +12,6 @@ export class RedisPubSubService {
   subscribe(channel: string, callback: (message: string) => void): void {
     const subscriber = new Redis(this.redisClient.options);
     subscriber.subscribe(channel);
-    subscriber.on('message', (channel, message) => callback(message));
+    subscriber.on('message', (_ /** channel */, message) => callback(message));
   }
 }

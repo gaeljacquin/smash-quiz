@@ -22,7 +22,7 @@ export default function Clip() {
   const audioRef = useRef<HTMLAudioElement>(null);
 
   const logPlay = useCallback(() => {
-    const score =  calculateScore(clip.fighters, toggledCharacters);
+    const score = calculateScore(clip.fighters, toggledCharacters);
     const date = new Date();
     const formatter = new Intl.DateTimeFormat('en-CA', {
       year: 'numeric',
@@ -106,7 +106,7 @@ export default function Clip() {
                     space={false}
                   />
                 </>
-              : (revealed ?
+                : (revealed ?
                   <>
                     You got
                     {' '}
@@ -117,7 +117,7 @@ export default function Clip() {
                     {' '}
                     characters!
                   </>
-                :
+                  :
                   <>
                     You selected
                     {' '}
@@ -154,7 +154,7 @@ export default function Clip() {
                 />
               </div>
             </>
-          ): (
+          ) : (
             <>
               <div className="flex mb-12">
                 <Video
@@ -195,7 +195,7 @@ export default function Clip() {
               <div className="grid-1 gap-4 flex flex-col sm:flex-row justify-center mb-5">
                 {toggledCharacters.length === 0 ?
                   <span className="bg-pink-100 text-pink-800 border-pink-400 text-xs font-medium me-2 px-2.5 py-0.5 rounded border">{revealed ? 'N/A' : "Yes it's an Aerosmith reference..."}</span>
-                : (
+                  : (
                     toggledCharacters.map((character) => (
                       <CharacterBadge
                         key={character + '-selection'}
@@ -207,7 +207,7 @@ export default function Clip() {
                 }
               </div>
             </>
-          :
+            :
             <div className="sm:hidden md:mb-64">
               <h2 className="text-2xl font-semibold text-transparent">
                 {messages.secret}

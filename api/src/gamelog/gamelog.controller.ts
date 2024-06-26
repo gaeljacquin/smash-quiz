@@ -1,6 +1,6 @@
 import { Controller, Post, Body } from '@nestjs/common';
 import { GameLogDto } from '~/src/gamelog/gamelog.dto';
-import { RabbitMQProducerService } from '~/src/rabbitmq/rmq-producer.service';
+import { RabbitMQProducerService } from '~/rabbitmq/rmq-producer.service';
 
 @Controller('log')
 export class GameLogController {

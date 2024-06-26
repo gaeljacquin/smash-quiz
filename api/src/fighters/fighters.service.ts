@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { RedisService } from '~/src/redis/redis.service';
+import { RedisService } from '~/redis/redis.service';
 // import { CreateFighterDto } from './dto/create-fighter.dto';
 // import { UpdateFighterDto } from './dto/update-fighter.dto';
 
