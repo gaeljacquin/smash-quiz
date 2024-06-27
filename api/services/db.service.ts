@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { clip, fighter } from '@prisma/client';
-import { PrismaService } from '~/src/services/prisma.service';
+import { PrismaService } from '~/services/prisma.service';
 
 @Injectable()
 export class DbService {

@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
-import { RedisPubSubService } from '~/src/redis/redis-pubsub.service';
-import { DbService } from '~/src/services/db.service';
+import { RedisPubSubService } from '~/redis/redis-pubsub.service';
+import { DbService } from '~/services/db.service';
 
 @Injectable()
 export class GameLogsService {

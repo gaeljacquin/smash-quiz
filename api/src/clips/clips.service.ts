@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { RedisService } from '~/src/redis/redis.service';
+import { RedisService } from '~/redis/redis.service';
 // import { CreateClipDto } from './dto/create-clip.dto';
 // import { UpdateClipDto } from './dto/update-clip.dto';
 
